@@ -32,19 +32,6 @@ class LoginHandler(BaseHandler):
         return self.write({'status':400, 'msg': result['msg']})
 
 
-class MobileCodeHandler(BaseHandler):
-    """03发送手机短信"""
-    def post(self):
-        mobile = self.get_argument('mobile', '')
-        code = self.get_argument('code', '')
-        # captcha = self.get_argument('captcha', '')
-        # print mobile, code, captcha
-        # result = get_mobile_code_lib(self, mobile, code, captcha)
-        result = get_mobile_code_lib(self, mobile, code)
-
-        if result['status'] is True:
-            return self.write({'status': 200, 'msg': result['msg']})
-        return self.write({'status': 400, 'msg': result['msg']})
 
 
 class RegistHandler(BaseHandler):
